@@ -28,9 +28,9 @@
 # Depois de criar, ele vai te mostrar comandos. Use algo assim:
 
     git remote remove origin
-    git remote add origin https://github.com/andersonzorn/tutorial-front-end-nodejs.git
+    git remote add origin https://github.com/andersonzorn/HelloWorld-NodeJs.git
 
-    git remote add origin https://github.com/andersonzorn/tutorial-front-end-nodejs.git
+    git remote add origin https://github.com/andersonzorn/HelloWorld-NodeJs.git
     git branch -M main
     git push -u origin main
 
