@@ -5,7 +5,7 @@ Este não é o seu "Hello World" comum. Esta é uma implementação premium util
 O projeto apresenta um planeta Terra renderizado inteiramente em **CSS3**, com camadas de nuvens, rotação de continentes e brilho atmosférico, tudo mantendo uma performance extremamente leve e sem dependências de frameworks frontend pesados.
 
 ## 🚀 Principais Diferenciais
-
+     
 - **UI Cinematográfica**: Experiência visual rica com gradientes dinâmicos e tipografia moderna.
 - **Planeta 3D (Pure CSS)**: Animação avançada de rotação e flutuação sem o uso de imagens ou WebGL.
 - **Layout Inteligente**: Design responsivo que se adapta de monitores UltraWide a dispositivos móveis.
