@@ -8,7 +8,7 @@ const renderPage = (name) => `<!DOCTYPE html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello ${name} | Zorn</title>
+    <title>Hello ${name} | Exemplo</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
     <style> 
       :root {
@@ -377,8 +377,9 @@ const renderPage = (name) => `<!DOCTYPE html>
       .footer {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+        gap: 12px 18px;
         padding: 0 40px 12px;
+        align-items: start;
       }
 
       .footer article {
@@ -398,6 +399,24 @@ const renderPage = (name) => `<!DOCTYPE html>
         color: var(--muted);
         line-height: 1.4;
         font-size: 0.8rem;
+      }
+
+      .footer-signature {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 16px 0 8px;
+        margin-top: 8px;
+        border-top: 1px solid var(--line);
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+      }
+
+      .footer-signature b {
+        color: var(--gold);
+        text-shadow: 0 0 12px rgba(255, 211, 110, 0.4);
+        font-weight: 800;
       }
 
       code {
@@ -564,6 +583,9 @@ const renderPage = (name) => `<!DOCTYPE html>
             <h2>Egestas Maecenas</h2>
             <p>Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim.</p>
           </article>
+          <div class="footer-signature">
+            Handcrafted with Gemini by <b>Zorn</b> • ${new Date().getFullYear()}
+          </div>
         </section>
       </section>
     </main>
