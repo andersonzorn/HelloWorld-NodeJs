@@ -8,24 +8,22 @@ const renderPage = (name) => `<!DOCTYPE html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello ${name} | Cloud Run Showcase</title>
-    <meta
-      name="description"
-      content="A polished Hello World experience for Google Cloud Run built with Node.js and Express."
-    />
+    <title>Hello ${name} | Lorem Ipsum</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
     <style>
       :root {
         color-scheme: dark;
-        --bg: #07111f;
-        --bg-soft: #10233f;
-        --panel: rgba(8, 20, 38, 0.78);
-        --line: rgba(255, 255, 255, 0.14);
-        --text: #f5f7fb;
-        --muted: #b8c3d9;
-        --cyan: #7de2ff;
-        --teal: #74f2ce;
-        --gold: #ffd166;
-        --shadow: 0 30px 80px rgba(2, 6, 23, 0.45);
+        --bg: #03111f;
+        --bg-deep: #01060f;
+        --panel: rgba(7, 17, 31, 0.72);
+        --line: rgba(148, 214, 255, 0.18);
+        --text: #f4fbff;
+        --muted: #9fb7c8;
+        --cyan: #76e6ff;
+        --blue: #2d7ff9;
+        --aqua: #7bffd4;
+        --gold: #ffd36e;
+        --shadow: 0 28px 90px rgba(1, 10, 20, 0.55);
       }
 
       * {
@@ -38,10 +36,10 @@ const renderPage = (name) => `<!DOCTYPE html>
         font-family: "Aptos", "Segoe UI Variable Display", "Trebuchet MS", sans-serif;
         color: var(--text);
         background:
-          radial-gradient(circle at top left, rgba(125, 226, 255, 0.18), transparent 30%),
-          radial-gradient(circle at 85% 15%, rgba(255, 209, 102, 0.22), transparent 25%),
-          radial-gradient(circle at bottom right, rgba(116, 242, 206, 0.16), transparent 32%),
-          linear-gradient(135deg, #020817 0%, var(--bg) 55%, var(--bg-soft) 100%);
+          radial-gradient(circle at 18% 18%, rgba(118, 230, 255, 0.14), transparent 24%),
+          radial-gradient(circle at 82% 20%, rgba(45, 127, 249, 0.18), transparent 28%),
+          radial-gradient(circle at 50% 100%, rgba(123, 255, 212, 0.12), transparent 30%),
+          linear-gradient(135deg, var(--bg-deep) 0%, #04182b 45%, #09233c 100%);
         overflow-x: hidden;
       }
 
@@ -49,55 +47,81 @@ const renderPage = (name) => `<!DOCTYPE html>
       body::after {
         content: "";
         position: fixed;
-        inset: auto;
-        width: 22rem;
-        height: 22rem;
-        border-radius: 999px;
-        filter: blur(40px);
-        z-index: 0;
+        width: 30rem;
+        height: 30rem;
+        border-radius: 50%;
+        filter: blur(70px);
         pointer-events: none;
+        z-index: 0;
       }
 
       body::before {
-        top: 8%;
-        left: -8%;
-        background: rgba(125, 226, 255, 0.12);
-        animation: drift 14s ease-in-out infinite;
+        left: -8rem;
+        top: -8rem;
+        background: rgba(118, 230, 255, 0.16);
+        animation: floatAura 14s ease-in-out infinite;
       }
 
       body::after {
-        right: -6%;
-        bottom: 5%;
-        background: rgba(255, 209, 102, 0.12);
-        animation: drift 16s ease-in-out infinite reverse;
+        right: -10rem;
+        bottom: -10rem;
+        background: rgba(45, 127, 249, 0.16);
+        animation: floatAura 18s ease-in-out infinite reverse;
       }
 
       main {
         position: relative;
         z-index: 1;
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 48px;
+        width: min(1180px, calc(100% - 32px));
+        min-height: 100vh;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
       }
 
       .shell {
         position: relative;
+        width: 100%;
+        min-height: min-content;
+        overflow: clip;
         border: 1px solid var(--line);
-        background: linear-gradient(180deg, rgba(10, 25, 47, 0.86), rgba(7, 17, 31, 0.88));
-        backdrop-filter: blur(18px);
-        border-radius: 28px;
+        border-radius: 32px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+          var(--panel);
+        backdrop-filter: blur(20px);
         box-shadow: var(--shadow);
-        overflow: hidden;
+      }
+
+      .shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(115deg, transparent 10%, rgba(255, 255, 255, 0.06) 35%, transparent 60%),
+          linear-gradient(transparent 96%, rgba(118, 230, 255, 0.18) 100%);
+        opacity: 0.7;
+        pointer-events: none;
       }
 
       .topbar {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 16px;
-        padding: 18px 22px;
+        padding: 12px 20px;
         border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.92rem;
+        color: var(--muted);
       }
 
       .dots {
@@ -106,95 +130,108 @@ const renderPage = (name) => `<!DOCTYPE html>
       }
 
       .dots span {
-        width: 12px;
-        height: 12px;
+        width: 11px;
+        height: 11px;
         border-radius: 50%;
       }
 
-      .dots span:nth-child(1) { background: #ff6b6b; }
-      .dots span:nth-child(2) { background: #ffd166; }
-      .dots span:nth-child(3) { background: #06d6a0; }
+      .dots span:nth-child(1) { background: #ff7a7a; }
+      .dots span:nth-child(2) { background: #ffd36e; }
+      .dots span:nth-child(3) { background: #71f7bf; }
 
       .deploy-pill {
         padding: 8px 12px;
         border-radius: 999px;
-        border: 1px solid rgba(125, 226, 255, 0.28);
+        border: 1px solid rgba(118, 230, 255, 0.25);
+        background: rgba(118, 230, 255, 0.08);
         color: var(--cyan);
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
       .hero {
+        position: relative;
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 28px;
-        padding: 34px;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        align-items: center;
+        gap: 24px;
+        padding: 10px 40px;
+      }
+
+      .copy {
+        max-width: 580px;
       }
 
       .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        padding: 8px 14px;
+        padding: 9px 14px;
         border-radius: 999px;
-        background: rgba(125, 226, 255, 0.08);
-        border: 1px solid rgba(125, 226, 255, 0.16);
-        color: var(--cyan);
-        font-size: 0.85rem;
-        letter-spacing: 0.08em;
+        border: 1px solid rgba(123, 255, 212, 0.18);
+        background: rgba(123, 255, 212, 0.08);
+        color: var(--aqua);
+        font-size: 0.82rem;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
       }
 
       h1 {
-        margin: 18px 0 16px;
+        margin: 4px 0 6px;
         font-family: "Rockwell", "Georgia", serif;
-        font-size: clamp(3rem, 6vw, 5.6rem);
-        line-height: 0.95;
-        letter-spacing: -0.04em;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 0.9;
+        letter-spacing: -0.05em;
       }
 
-      h1 span {
+      .hello-name {
         display: block;
-        background: linear-gradient(120deg, var(--text), var(--cyan), var(--gold));
+        margin-top: 5px;
+        background: linear-gradient(120deg, #ffffff 0%, var(--cyan) 40%, var(--gold) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
       }
 
       .lede {
-        max-width: 62ch;
+        margin: 0;
         color: var(--muted);
-        font-size: 1.05rem;
-        line-height: 1.7;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        max-width: 58ch;
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 14px;
-        margin-top: 28px;
+        margin-top: 12px;
       }
 
       .button,
       .ghost {
-        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
         padding: 14px 18px;
-        border-radius: 14px;
+        border-radius: 16px;
+        text-decoration: none;
         font-weight: 700;
         transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
       }
 
       .button {
-        color: #04111d;
-        background: linear-gradient(135deg, var(--cyan), var(--teal));
-        box-shadow: 0 16px 40px rgba(116, 242, 206, 0.18);
+        color: #02111d;
+        background: linear-gradient(135deg, var(--cyan), var(--aqua));
+        box-shadow: 0 18px 34px rgba(118, 230, 255, 0.22);
       }
 
       .ghost {
         color: var(--text);
-        border: 1px solid var(--line);
         background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
       }
 
       .button:hover,
@@ -202,144 +239,264 @@ const renderPage = (name) => `<!DOCTYPE html>
         transform: translateY(-2px);
       }
 
-      .metrics {
+      .highlights {
         display: grid;
-        gap: 16px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 12px;
       }
 
-      .card,
-      .stack,
-      .terminal,
-      .footer-grid article {
+      .highlight {
+        padding: 10px 12px;
         border: 1px solid var(--line);
+        border-radius: 18px;
         background: rgba(255, 255, 255, 0.03);
-        border-radius: 22px;
       }
 
-      .card {
-        padding: 22px;
-      }
-
-      .card strong {
+      .highlight strong {
         display: block;
-        font-size: 2.4rem;
-        margin-bottom: 6px;
-      }
-
-      .stack {
-        padding: 22px;
-      }
-
-      .stack ul {
-        list-style: none;
-        padding: 0;
-        margin: 14px 0 0;
-        display: grid;
-        gap: 12px;
-      }
-
-      .stack li {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        color: var(--muted);
-      }
-
-      .stack b {
+        margin-bottom: 4px;
         color: var(--text);
+        font-size: 0.9rem;
       }
 
-      .terminal {
-        margin: 0 34px 34px;
+      .highlight span {
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.85rem;
+      }
+
+      .planet-stage {
+        position: relative;
+        min-height: 240px;
+        display: grid;
+        place-items: center;
+      }
+
+      .planet-stage::before {
+        content: "";
+        position: absolute;
+        width: min(20vw, 240px);
+        height: min(20vw, 240px);
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(123, 255, 212, 0.3), transparent 65%);
+        filter: blur(26px);
+        animation: pulse 5s ease-in-out infinite;
+      }
+
+      .orbit {
+        position: absolute;
+        width: min(28vw, 340px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 1px solid rgba(118, 230, 255, 0.14);
+        transform: rotateX(72deg);
+      }
+
+      .ring {
+        position: absolute;
+        width: min(32vw, 380px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 211, 110, 0.18);
+        transform: rotate(-16deg);
+      }
+
+      .earth {
+        position: relative;
+        width: min(18vw, 210px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: #1c72dd;
+        box-shadow:
+          inset -35px -25px 50px rgba(0, 0, 0, 0.9),
+          inset 15px 15px 35px rgba(255, 255, 255, 0.2),
+          0 0 30px rgba(77, 169, 255, 0.4),
+          0 0 0 1px rgba(255, 255, 255, 0.1),
+          0 0 80px rgba(118, 230, 255, 0.15);
+        animation: planetFloat 8s ease-in-out infinite;
         overflow: hidden;
       }
 
-      .terminal header {
-        padding: 14px 18px;
-        border-bottom: 1px solid var(--line);
-        color: var(--muted);
-        font-size: 0.95rem;
+      .earth::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 20%, #55c36a 0% 14%, transparent 15%),
+          radial-gradient(circle at 80% 35%, #47b95c 0% 18%, transparent 19%),
+          radial-gradient(circle at 35% 75%, #5dd36f 0% 22%, transparent 23%),
+          radial-gradient(circle at 75% 85%, #4bbb63 0% 12%, transparent 13%),
+          radial-gradient(circle at 50% 10%, #72d97d 0% 8%, transparent 9%),
+          radial-gradient(circle at 10% 50%, #3e9c50 0% 10%, transparent 11%),
+          #1663c7;
+        background-size: 200% 100%;
+        animation: spinMap 20s linear infinite;
+        filter: blur(0.5px);
       }
 
-      pre {
-        margin: 0;
-        padding: 22px;
-        overflow-x: auto;
-        font-family: "Cascadia Code", "Fira Code", monospace;
-        color: #d7e3f7;
-        line-height: 1.8;
+      .earth::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.4) 0%, transparent 50%),
+          linear-gradient(90deg, rgba(255,255,255,0.1) 0%, transparent 20%, rgba(0,0,0,0.4) 80%);
+        animation: cloudsMove 24s linear infinite;
+        background-image: 
+          radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0% 20%, transparent 21%),
+          radial-gradient(circle at 20% 80%, rgba(255,255,255,0.15) 0% 15%, transparent 16%);
+        background-size: 150% 100%;
       }
 
-      .footer-grid {
+      .stars,
+      .stars::before,
+      .stars::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(circle at 15% 24%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
+          radial-gradient(circle at 76% 20%, rgba(118, 230, 255, 0.9) 0 1px, transparent 1.8px),
+          radial-gradient(circle at 68% 72%, rgba(255, 211, 110, 0.9) 0 1.2px, transparent 2px),
+          radial-gradient(circle at 26% 78%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
+          radial-gradient(circle at 92% 54%, rgba(123, 255, 212, 0.9) 0 1px, transparent 1.7px);
+        opacity: 0.85;
+      }
+
+      .stars::before {
+        transform: scale(1.1);
+        opacity: 0.45;
+      }
+
+      .stars::after {
+        transform: scale(1.22);
+        opacity: 0.22;
+      }
+
+      .footer {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 18px;
-        margin: 0 34px 34px;
+        padding: 0 40px 12px;
       }
 
-      .footer-grid article {
-        padding: 20px;
+      .footer article {
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
       }
 
-      .footer-grid h2 {
-        margin: 0 0 10px;
-        font-size: 1.05rem;
+      .footer h2 {
+        margin: 0 0 4px;
+        font-size: 0.9rem;
       }
 
-      .footer-grid p {
+      .footer p {
         margin: 0;
         color: var(--muted);
-        line-height: 1.65;
+        line-height: 1.4;
+        font-size: 0.8rem;
       }
 
-      .hello-name {
-        color: var(--gold);
+      code {
+        font-family: "Cascadia Code", "Fira Code", monospace;
       }
 
-      @keyframes drift {
+      @keyframes cloudsMove {
+        from { background-position: 0% 0%; }
+        to { background-position: 200% 0%; }
+      }
+
+      @keyframes spinMap {
+        from { background-position: 0% 0%; }
+        to { background-position: -200% 0%; }
+      }
+
+      @keyframes planetFloat {
+        0%, 100% { transform: translateY(0px) rotate(-6deg); }
+        50% { transform: translateY(-16px) rotate(6deg); }
+      }
+
+      @keyframes floatAura {
         0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-        50% { transform: translate3d(18px, -12px, 0) scale(1.05); }
+        50% { transform: translate3d(18px, -24px, 0) scale(1.08); }
       }
 
-      @media (max-width: 900px) {
+      @keyframes pulse {
+        0%, 100% { transform: scale(0.92); opacity: 0.65; }
+        50% { transform: scale(1.04); opacity: 1; }
+      }
+
+      @media (max-width: 960px) {
         .hero,
-        .footer-grid {
+        .footer {
           grid-template-columns: 1fr;
         }
 
         .hero {
-          padding: 26px;
+          padding: 30px;
         }
 
-        .terminal,
-        .footer-grid {
-          margin-left: 26px;
-          margin-right: 26px;
+        .copy {
+          max-width: none;
+        }
+
+        .planet-stage {
+          min-height: 280px;
+          order: -1;
+          margin-top: 20px;
+        }
+
+        .earth {
+          width: min(50vw, 240px);
+        }
+
+        .orbit {
+          width: min(62vw, 300px);
+        }
+
+        .ring {
+          width: min(72vw, 340px);
+        }
+
+        .footer {
+          padding: 20px 30px 30px;
         }
       }
 
-      @media (max-width: 640px) {
+      @media (max-width: 720px) {
         main {
-          width: min(100% - 18px, 1120px);
-          padding-top: 14px;
+          width: min(100% - 18px, 1180px);
+          padding: 20px 0;
         }
 
         .topbar {
           padding: 14px 16px;
+          align-items: flex-start;
+          flex-direction: column;
         }
 
-        .hero,
-        .terminal header,
-        pre,
-        .footer-grid article {
-          padding-left: 18px;
-          padding-right: 18px;
+        .hero {
+          padding: 22px 18px 26px;
         }
 
-        .terminal,
-        .footer-grid {
-          margin-left: 18px;
-          margin-right: 18px;
+        .highlights,
+        .footer {
+          grid-template-columns: 1fr;
+        }
+
+        .footer {
+          padding: 0 18px 18px;
+        }
+
+        .planet-stage {
+          min-height: 240px;
+        }
+
+        .earth {
+          width: min(65vw, 220px);
         }
       }
     </style>
@@ -347,66 +504,65 @@ const renderPage = (name) => `<!DOCTYPE html>
   <body>
     <main>
       <section class="shell">
+        <div class="stars" aria-hidden="true"></div>
         <div class="topbar">
-          <div class="dots" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
+          <div class="brand">
+            <div class="dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span>Node.js • Express • Visual Hero</span>
           </div>
-          <div class="deploy-pill">Ready for Google Cloud Run</div>
+          <div class="deploy-pill">Exemplo Hello World</div>
         </div>
 
         <div class="hero">
-          <div>
-            <div class="eyebrow">Node.js • Express • Cloud Run</div>
+          <div class="copy">
+            <div class="eyebrow">Página Principal</div>
             <h1>Hello <span class="hello-name">${name}</span></h1>
             <p class="lede">
-              This service turns a simple Hello World into a polished landing page with bold visuals,
-              responsive layout, lightweight runtime behavior, and clean deployment compatibility for Cloud Run.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.
             </p>
             <div class="actions">
-              <a class="button" href="https://cloud.google.com/run" target="_blank" rel="noreferrer">Deploy on Cloud Run</a>
-              <a class="ghost" href="/health">Check health endpoint</a>
+              <a class="button" href="/">Action Primary</a>
+              <a class="ghost" href="/health">Action Secondary</a>
+            </div>
+            <div class="highlights">
+              <div class="highlight">
+                <strong>Lorem Ipsum</strong>
+                <span>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+              </div>
+              <div class="highlight">
+                <strong>Dolor Sit</strong>
+                <span>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</span>
+              </div>
+              <div class="highlight">
+                <strong>Amet Consectetur</strong>
+                <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span>
+              </div>
             </div>
           </div>
 
-          <div class="metrics">
-            <div class="card">
-              <strong>Fast</strong>
-              <span>Single Express service, minimal moving parts, ideal for quick container startup.</span>
-            </div>
-            <div class="stack">
-              <span>Stack highlights</span>
-              <ul>
-                <li><b>Runtime</b><span>Node.js on port ${port}</span></li>
-                <li><b>Personalization</b><span><code>NAME=${name}</code></span></li>
-                <li><b>Operations</b><span>Health route + production-friendly defaults</span></li>
-              </ul>
-            </div>
+          <div class="planet-stage" aria-hidden="true">
+            <div class="orbit"></div>
+            <div class="ring"></div>
+            <div class="earth"></div>
           </div>
         </div>
 
-        <section class="terminal" aria-label="Deploy command preview">
-          <header>Suggested deploy command</header>
-          <pre>gcloud run deploy hello-visual \
-  --source . \
-  --region us-central1 \
-  --allow-unauthenticated \
-  --set-env-vars NAME=${name}</pre>
-        </section>
-
-        <section class="footer-grid">
+        <section class="footer">
           <article>
-            <h2>Visual polish</h2>
-            <p>Layered gradients, glass panels, expressive typography and subtle motion create a showcase feel without adding frontend build tooling.</p>
+            <h2>Pharetra Velit</h2>
+            <p>Elementum curabitur vitae nunc sed velit dignissim sodales ut eu.</p>
           </article>
           <article>
-            <h2>Cloud-ready</h2>
-            <p>The app respects the <code>PORT</code> provided by Cloud Run and keeps the server entrypoint simple for container deployment.</p>
+            <h2>Massa Placerat</h2>
+            <p>Orci porta non pulvinar neque laoreet suspendisse interdum consectetur.</p>
           </article>
           <article>
-            <h2>Easy to evolve</h2>
-            <p>You can keep this as a landing page or grow it into a product splash page, docs entry, or service dashboard starter.</p>
+            <h2>Egestas Maecenas</h2>
+            <p>Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim.</p>
           </article>
         </section>
       </section>
@@ -437,4 +593,3 @@ app.listen(port, () => {
 });
 
 export default app;
-
