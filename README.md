@@ -11,7 +11,7 @@ O projeto apresenta um planeta Terra renderizado inteiramente em **CSS3**, com c
 - **Layout Inteligente**: Design responsivo que se adapta de monitores UltraWide a dispositivos móveis.
 - **Pronto para Cloud**: Configurado especificamente para **Google Cloud Run**, respeitando a injeção dinâmica de portas e variáveis.
 - **Observabilidade**: Inclui endpoint de `/health` para monitoramento de saúde do serviço.
-
+    
 ## 🛠️ Tecnologias Utilizadas
 
 - **Runtime**: Node.js (ES Modules)

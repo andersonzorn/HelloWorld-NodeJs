@@ -550,15 +550,15 @@ const renderPage = (name) => `<!DOCTYPE html>
             <div class="highlights">
               <div class="highlight">
                 <strong>Lorem Ipsum</strong>
-                <span>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                <span>Sed do eiusmod tempor incididunt.</span>
               </div>
               <div class="highlight">
                 <strong>Dolor Sit</strong>
-                <span>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</span>
+                <span>Ut enim ad minim veniam, quis nostrud.</span>
               </div>
               <div class="highlight">
                 <strong>Amet Consectetur</strong>
-                <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span>
+                <span>Duis aute irure dolor in reprehenderit.</span>
               </div>
             </div>
           </div>
@@ -573,15 +573,15 @@ const renderPage = (name) => `<!DOCTYPE html>
         <section class="footer">
           <article>
             <h2>Pharetra Velit</h2>
-            <p>Elementum curabitur vitae nunc sed velit dignissim sodales ut eu.</p>
+            <p>Elementum curabitur vitae nunc sed velit.</p>
           </article>
           <article>
             <h2>Massa Placerat</h2>
-            <p>Orci porta non pulvinar neque laoreet suspendisse interdum consectetur.</p>
+            <p>Orci porta non pulvinar neque laoreet.</p>
           </article>
           <article>
             <h2>Egestas Maecenas</h2>
-            <p>Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim.</p>
+            <p>Volutpat lacus laoreet non curabitur.</p>
           </article>
           <div class="footer-signature">
             Handcrafted with Gemini by <b>Zorn</b> • ${new Date().getFullYear()}
