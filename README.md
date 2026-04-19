@@ -21,19 +21,3 @@ Este projeto utiliza o sistema de versionamento **Git**. Seguimos uma convençã
 As versões seguem o padrão de Semantic Versioning (SemVer).
 
 ## 📜 Histórico de Alterações (Changelog)
-
-O formato é baseado em Keep a Changelog.
-
-### [1.0.0] - 2023-10-27
-#### Adicionado
-- Estrutura inicial do servidor Node.js com Express.
-- Interface cinematográfica com Terra em CSS3.
-- Configuração de testes com Mocha e Supertest.
-- Documentação inicial do projeto.
-
----
-
-> **Dica**: Para ver o histórico completo de commits, utilize o comando:
-> ```bash
-> git log --oneline --graph --all
-> ```
