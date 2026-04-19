@@ -1,19 +1,31 @@
-# Hello World para Cloud Run
+# 🌍 Hello World: Cinematic Edition
 
-Uma versao remodelada do projeto com visual premium, responsivo e pronta para deploy no Google Cloud Run.
+Este não é o seu "Hello World" comum. Esta é uma implementação premium utilizando **Node.js** e **Express**, projetada com uma interface cinematográfica para demonstrar como aplicações simples podem ter um visual impactante e profissional.
 
-## O que mudou
+O projeto apresenta um planeta Terra renderizado inteiramente em **CSS3**, com camadas de nuvens, rotação de continentes e brilho atmosférico, tudo mantendo uma performance extremamente leve e sem dependências de frameworks frontend pesados.
 
-- Landing page em HTML com design mais forte e responsivo
-- Personalizacao dinamica usando a variavel de ambiente `NAME`
-- Endpoint `GET /health` para verificacao de saude
-- Compativel com a porta `PORT` injetada pelo Cloud Run
-- Testes atualizados para o novo comportamento
+## 🚀 Principais Diferenciais
+
+- **UI Cinematográfica**: Experiência visual rica com gradientes dinâmicos e tipografia moderna.
+- **Planeta 3D (Pure CSS)**: Animação avançada de rotação e flutuação sem o uso de imagens ou WebGL.
+- **Layout Inteligente**: Design responsivo que se adapta de monitores UltraWide a dispositivos móveis.
+- **Pronto para Cloud**: Configurado especificamente para **Google Cloud Run**, respeitando a injeção dinâmica de portas e variáveis.
+- **Observabilidade**: Inclui endpoint de `/health` para monitoramento de saúde do serviço.
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Runtime**: Node.js (ES Modules)
+- **Servidor**: Express.js
+- **Frontend**: HTML5 Semântico & CSS3 Moderno (Variáveis, Flexbox, Grid)
+- **Testes**: Mocha, Supertest e C8 para cobertura de código.
 
 ## Rodando localmente
 
 ```bash
+# Instalar dependências
 npm install
+
+# Iniciar o servidor
 npm start
 ```
 
