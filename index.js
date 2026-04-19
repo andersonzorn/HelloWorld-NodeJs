@@ -541,7 +541,7 @@ const renderPage = (name) => `<!DOCTYPE html>
             <div class="eyebrow">Página Principal</div>
             <h1>Hello <span class="hello-name">${name}</span></h1>
             <p class="lede">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.
+              Esse é um exemplo clássico faz nada.
             </p>
             <div class="actions">
               <a class="button" href="/">Action Primary</a>
