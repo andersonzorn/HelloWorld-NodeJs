@@ -4,14 +4,6 @@ Este não é o seu "Hello World" comum. Esta é uma implementação premium util
 
 O projeto apresenta um planeta Terra renderizado inteiramente em **CSS3**, com camadas de nuvens, rotação de continentes e brilho atmosférico, tudo mantendo uma performance extremamente leve e sem dependências de frameworks frontend pesados.
 
-## 🚀 Principais Diferenciais
-     
-- **UI Cinematográfica**: Experiência visual rica com gradientes dinâmicos e tipografia moderna.
-- **Planeta 3D (Pure CSS)**: Animação avançada de rotação e flutuação sem o uso de imagens ou WebGL.
-- **Layout Inteligente**: Design responsivo que se adapta de monitores UltraWide a dispositivos móveis.
-- **Pronto para Cloud**: Configurado especificamente para **Google Cloud Run**, respeitando a injeção dinâmica de portas e variáveis.
-- **Observabilidade**: Inclui endpoint de `/health` para monitoramento de saúde do serviço.
-    
 ## 🛠️ Tecnologias Utilizadas
 
 - **Runtime**: Node.js (ES Modules)
@@ -19,40 +11,29 @@ O projeto apresenta um planeta Terra renderizado inteiramente em **CSS3**, com c
 - **Frontend**: HTML5 Semântico & CSS3 Moderno (Variáveis, Flexbox, Grid)
 - **Testes**: Mocha, Supertest e C8 para cobertura de código.
 
-## Rodando localmente
+## 📌 Controle de Versão
 
-```bash
-# Instalar dependências
-npm install
+Este projeto utiliza o sistema de versionamento **Git**. Seguimos uma convenção de branches para organizar o desenvolvimento:
 
-# Iniciar o servidor
-npm start
-```
+- `main`: Versão estável em produção.
+- `feature/*`: Novas funcionalidades ou melhorias.
 
-A aplicacao sobe por padrao em `http://localhost:8080`.
+As versões seguem o padrão de Semantic Versioning (SemVer).
 
-## Variaveis de ambiente
+## 📜 Histórico de Alterações (Changelog)
 
-- `PORT`: porta HTTP usada pelo servidor
-- `NAME`: nome exibido na landing page
+O formato é baseado em Keep a Changelog.
 
-Exemplo:
+### [1.0.0] - 2023-10-27
+#### Adicionado
+- Estrutura inicial do servidor Node.js com Express.
+- Interface cinematográfica com Terra em CSS3.
+- Configuração de testes com Mocha e Supertest.
+- Documentação inicial do projeto.
 
-```bash
-NAME=Ander npm start
-```
+---
 
-## Deploy no Cloud Run
-
-```bash
-gcloud run deploy hello-visual \
-  --source . \
-  --region us-central1 \
-  --allow-unauthenticated \
-  --set-env-vars NAME=Cloud
-```
-
-## Rotas
-
-- `/`: landing page visual
-- `/health`: retorna JSON com status da aplicacao
+> **Dica**: Para ver o histórico completo de commits, utilize o comando:
+> ```bash
+> git log --oneline --graph --all
+> ```
